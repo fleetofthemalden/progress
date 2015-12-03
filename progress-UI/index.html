@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Hire Me</title>
+	<link type="text/css" rel="stylesheet" href="http://d170x0azrpb2m0.cloudfront.net/2.5.0/stylesheets/progress.min.css" />
+	<link type="text/css" rel="stylesheet" href="ngpvan-challenge.css" />
+	<script src="angular.min.js"></script>
+	<script src="jquery.min.js"></script>
+	<script src="ngpvan-challenge.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!---
+	Completed by Dixon Minnick, 11/24/15
+	-->
+</head>
+<body ng-app="thesePeople" ng-controller="peopleController">
+	<div class="app-wrapper">
+		<div class="app-header">
+			<header class="app-header">
+				<section class="app-nav-header">
+					<div class="app-nav-container">
+						<div class="app-branding">
+							<a class="app-title" target="_blank" href="http://minnick.co">
+								<h1>
+									<em>youshould</em>
+									<span class="normal">hireme</span>
+								</h1>
+							</a>
+						</div>
+						<ul class="app-user-controls">
+							<li class="dropdown dropdown-app-switcher">
+								<a class="dropdown-toggle" data-toggle="dropdown">
+									<span class="glyphicons glyphicons-show-thumbnails x1"></span>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li class="active">
+										<a>Dropdown Item Active</a>
+									</li>
+									<li>
+										<a>Dropdown Item</a>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown dropdown-user">
+								<a class="dropdown-toggle" data-toggle="dropdown" target="_blank" href="http://minnick.co/resume">
+									<!--temporarily not a toggle, for self-promotion purposes-->
+									<div class="username-info">
+										<div class="profile-info">
+											<div class="username">dixonminnick</div>
+											<div class="sub-info">Committee Name</div>
+										</div>
+										<div class="profile-picture">
+											<span class="glyphicons glyphicons-user"></span>
+										</div>
+									</div>
+								</a>
+								<ul class="dropdown-menu dropdown-menu-right">
+									<li>
+										<a>User Dropdown Item</a>
+									</li>
+									<li>
+										<a>User Dropdown Item</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<nav class="app-nav">
+						<ul class="nav-tabs">
+							<li class="active">
+								<a href="#">Quick Lookup</a>
+							</li>
+							<li>
+								<a href="#">People</a>
+							</li>
+							<li>
+								<a href="#">Communication</a>
+							</li>
+						</ul>
+					</nav>
+				</section>
+			</header>
+		</div>
+		<div class="app-content">
+			<h1>Quick Lookup</h1>
+			<div class="grid-full">
+				<div class="col-md-6">					
+					<article class="panel panel-default">
+						<section class="panel-content">
+							<form method="post" action="">
+								<ul class="input-list">
+									<li class="input-unit">
+										<label class="input-label">Last Name</label>
+										<div class="input-control">
+											<input class="input-element input-element-base quickSearch lastName" type="text" ng-model="lastNameSearch" />
+										</div>
+									</li>
+									<li class="input-unit">
+										<label class="input-label">First Name</label>
+										<div class="input-control">
+											<input class="input-element input-element-base quickSearch firstName" type="text" ng-model="firstNameSearch" />
+										</div>
+									</li>
+									<li class="input-unit">
+										<label class="input-label">Email</label>
+										<div class="input-control">
+											<input class="input-element input-element-base quickSearch email" type="text" ng-model="emailSearch"/>
+										</div>
+									</li>
+									<li class="input-unit">
+										<label class="input-label">Phone</label>
+										<div class="input-control">
+											<input class="input-element input-element-base quickSearch phone" type="text" ng-model="phoneSearch"/>
+										</div>
+									</li>
+								</ul>
+							</form>
+						</section>
+						<footer class="panel-footer">
+							<div class="panel-buttons">
+								<button class="btn hide clearButton" ng-click="clearFilters()">Clear All</button>
+								<button class="btn btn-blue" ng-click="peopleFilter(lastNameSearch, firstNameSearch, emailSearch, phoneSearch)">Filter</button>
+							</div>
+						</footer>
+					</article>
+				</div>
+				<div class="col-md-18">
+					<article class="panel panel-default">
+						<section class="panel-content">
+							<div class="results-display hide">
+								<h1 class="inline">Results</h1>
+								<p class="right-align inline">{{resultsCount}} results</p>
+								<div class="table-wrapper">
+									<table class="table">
+										<thead class="thead">
+											<tr>
+												<th>
+													<a>Name</a>
+												</th>
+												<th>Email</th>
+												<th>Phone</th>
+											</tr>
+										</thead>
+										<tbody class="tbody">
+											<tr ng-repeat="person in peopleData | orderBy:'firstName'">
+												<td>
+													<div class="item-info">
+														<a>{{person.lastName}}, {{person.firstName}}</a>
+														<!-- <span class="item-sub-info">Item sub info</span> -->
+													</div>
+												</td>
+												<td>{{person.email}}</td>
+												<td>{{formatPhone(person.phone)}}</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="voodoo-magic">
+								<h3>No results yet.</h3>
+								Use filters to search for a contact.
+							</div>
+						</section>
+					</article>
+				</div>
+			</div>-
+		</div>
+	</div>
+</body>
+</html>

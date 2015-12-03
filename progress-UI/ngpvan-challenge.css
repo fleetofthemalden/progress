@@ -1,0 +1,11 @@
+.hide, .panel-buttons .btn.hide {
+	display: none;
+}
+
+.right-align {
+	float: right;
+}
+
+.inline{
+	display: inline-block;
+}
